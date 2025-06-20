@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv #type:ignore
+
+load_dotenv()
+import os #python aracılığığla işletim sistemiyle iletişime geçmeyi sağlar 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,8 +80,13 @@ WSGI_APPLICATION = 'digitalvocabulary.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #HEROKUDAKİ DATABASE GİRİLİR NAME YERİNE
+        #os.environ.get :ilgili .envdeki ismi alacak
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('HOST')
     }
 }
 
