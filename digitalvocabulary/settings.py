@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'profiles',
     'rest_framework_simplejwt',
+    'vocabularies',
 ]
 
 MIDDLEWARE = [
