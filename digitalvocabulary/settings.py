@@ -24,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a)h896oj-vjd@_g$(qis-(j#kc%c6dj7eqb-0@p&dsayl#o$xe'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# hangi hostname'lerin kabul etmemizi sağlayan güvenlik önlemi
+# Heroku platformda yayınlanacağı için bu şekilde yapıldı
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -163,3 +165,7 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 
 }
+
+# deployment için;
+CSRF_COOKIE_SECURE= True
+SESSION_COOKIE_SECURE= True

@@ -25,12 +25,16 @@ djangorestframework-simplejwt==5.5.0
     # via -r requirements.in
 drf-spectacular==0.28.0
     # via -r requirements.in
+gunicorn==23.0.0
+    # via -r requirements.in
 inflection==0.5.1
     # via drf-spectacular
 jsonschema==4.24.0
     # via drf-spectacular
 jsonschema-specifications==2025.4.1
     # via jsonschema
+packaging==25.0
+    # via gunicorn
 psycopg[binary]==3.2.9
     # via -r requirements.in
 psycopg-binary==3.2.9
