@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'vocabularies',
     'exercises',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,8 @@ AUTH_USER_MODEL= 'profiles.CustomUser'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
     #projede yer alan tüm viewlere erişimi otomatik olarak değiştirdik
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',)
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 #token süresilerinin belirtilen kısmı
 from datetime import timedelta
@@ -152,3 +154,12 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=35),
     }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Digital Vocbulary API',
+    'DESCRIPTION': 'Provides the infrastructure for uses to create and practise their own vocabularies.',
+    'VERSION': '1.0.0',
+    #json formatında olan openai gömülü mü değil mi
+    'SERVE_INCLUDE_SCHEMA': False,
+
+}
