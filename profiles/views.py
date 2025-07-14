@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404
 class RegisterView(APIView):
     permission_classes= (permissions.AllowAny,)
     
-    #kayıt=post işlemi
+    # kayıt=post işlemi
     def post(self, request):
         serializer= RegisterSerializer(data= request.data)
         # serializer içinde sağlanan bilgilerin koşullara uygun mu değil mi?
@@ -31,7 +31,7 @@ class RegisterView(APIView):
 
 
 ######### usersearchview #######
-#listapiview yapmamızın sebebi: kullanıcıların diğer kullanıcıları username ile aratmasını sağlar
+# listapiview yapmamızın sebebi: kullanıcıların diğer kullanıcıları username ile aratmasını sağlar
 # list dönecek.düzenleme silme gibi işlemler yapılmayacak!
 class ProfileSearchView(ListAPIView):
     serializer_class= ProfileSerializer
@@ -41,7 +41,7 @@ class ProfileSearchView(ListAPIView):
     def get_queryset(self):
         username= self.request.query_params.get('username', '')
       
-        #paramtre sağlanmışsa
+        # parametre sağlanmışsa
         if username:
             # icontains: büyük-küçük harften bağımsız olarak username aratsın
             return Profile.objects.filter(user__username__icontains= username)
@@ -53,17 +53,17 @@ class ProfileSearchView(ListAPIView):
 # özeleştirme yapmak için apiview kullanılıyor
 class FollowProfileView(APIView):
 
-    #takip etme işlemi post metodu ile yapılır
+    # takip etme işlemi post metodu ile yapılır
     # username: doğrudan url içinden alınır, takip etmek istenilen user
     def post(self, request, username):
         profile_to_follow= get_object_or_404(Profile, user__username=username)
         
-        #kişi kendini takip etmesin diye
+        # kişi kendini takip etmesin diye
         if request.user.profile== profile_to_follow:
             return Response({"error": "Kendini takip edemezsin"},
                             status=status.HTTP_400_BAD_REQUEST)
         
-        #zaten takip ediliyorsa tekrar yapmaya gerek yok. eğer yoksa oluşturur
+        # zaten takip ediliyorsa tekrar yapmaya gerek yok. eğer yoksa oluşturur
         FollowRelation.objects.get_or_create(follower= request.user.profile, following= profile_to_follow)
         return Response({
             "success": "Başarıyla takip edilmiştir."
@@ -75,7 +75,7 @@ class UnfollowProfileView(APIView):
     def post(self, request, username):
         profile_to_unfollow= get_object_or_404(Profile, user__username=username)
 
-         #takip ediliyor mu?
+         # takip ediliyor mu?
          # following: unfollow yapılacak kişi
          # follower= unfollow yapan kişi(biz)
         follow_relation= FollowRelation.objects.filter(follower= request.user.profile,

@@ -9,9 +9,9 @@ from profiles.views import RegisterView,ProfileSearchView,FollowProfileView, Unf
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name= 'register'),
-    #kullanıcı bilgileri
+    # kullanıcı bilgileri
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    #tokenin süresibitmeden istek atabileceğimiz kısım
+    # tokenin süresibitmeden istek atabileceğimiz kısım
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('search/', ProfileSearchView.as_view(), name='search-profile'),

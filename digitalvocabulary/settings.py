@@ -88,8 +88,8 @@ WSGI_APPLICATION = 'digitalvocabulary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        #HEROKUDAKİ DATABASE GİRİLİR NAME YERİNE
-        #os.environ.get :ilgili .envdeki ismi alacak
+        # HEROKUDAKİ DATABASE GİRİLİR NAME YERİNE
+        # os.environ.get :ilgili .envdeki ismi alacak
         'NAME': os.environ.get('NAME'),
         'USER': os.environ.get('USER'),
         'PASSWORD': os.environ.get('PASSWORD'),
@@ -141,14 +141,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL= 'profiles.CustomUser'
 
-#JSON WEB AUTHENTICATION
+# JSON WEB AUTHENTICATION
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
     #projede yer alan tüm viewlere erişimi otomatik olarak değiştirdik
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
-#token süresilerinin belirtilen kısmı
+# token süresilerinin belirtilen kısmı
 from datetime import timedelta
 
 SIMPLE_JWT = {
@@ -161,7 +161,7 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Digital Vocbulary API',
     'DESCRIPTION': 'Provides the infrastructure for uses to create and practise their own vocabularies.',
     'VERSION': '1.0.0',
-    #json formatında olan openai gömülü mü değil mi
+    # json formatında olan openai gömülü mü değil mi
     'SERVE_INCLUDE_SCHEMA': False,
 
 }

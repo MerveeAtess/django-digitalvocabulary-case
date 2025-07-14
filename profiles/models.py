@@ -1,5 +1,4 @@
 # veri şemalarının tanımlanacak kısmı
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser 
 # AbstractUser:özelleştirmek için tanımlanmış
@@ -27,7 +26,7 @@ class FollowRelation(models.Model):
                                 related_name='followed_by')
     following= models.ForeignKey(Profile, on_delete=models.CASCADE,
                                  related_name='follows')
-    #  otomatik olarak o anki tarihe eşitlesin
+    # otomatik olarak o anki tarihe eşitlesin
     created= models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -18,6 +18,4 @@ urlpatterns=[
      
      path('<vocabulary_id>/copy/', CopyVocabularyView.as_view(),
           name='copy-vocabularies')
-
-
 ]

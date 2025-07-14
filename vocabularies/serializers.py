@@ -3,11 +3,11 @@ from vocabularies.models import Vocabulary, Word
 
 
 class VocabularySerializer(serializers.ModelSerializer):
-    #hangi modele referens alcağını gösterir
+    # hangi modele referans alacağını gösterir
     
     class Meta:
         model= Vocabulary
-        #serializer oluşturulurken kullanılacak fields
+        # serializer oluşturulurken kullanılacak fields
         fields= ('id', 'name', 'description')
 
 class WordSerializer(serializers.ModelSerializer):

@@ -2,9 +2,8 @@ from rest_framework import serializers,validators
 from django.contrib.auth.password_validation import validate_password
 from profiles.models import CustomUser, Profile
 
-
 class RegisterSerializer(serializers.ModelSerializer):
-    #özelleştirmek istediklerimiz
+    # özelleştirmek istediklerimiz
     email= serializers.EmailField(validators= [validators.UniqueValidator(
         queryset= CustomUser.objects.all())])
     
@@ -16,9 +15,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         model= CustomUser
         fields= ('id', 'username', 'email', 'password')
 
-    #save metodu çalıştırıldığında;
+    # save metodu çalıştırıldığında;
     # validated_data: serializerda doğrulanmış veriyi tetikler
     def create(self, validated_data):
+        
         # create_user() : sağlanan şifrenin hashlenmesini sağlar
         user= CustomUser.objects.create_user(
             username= validated_data['username'],

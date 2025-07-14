@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# komut tabanı aşaalrıın yapıldığı kısım
+# komut tabanı aşamalarının yapıldığı kısım
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

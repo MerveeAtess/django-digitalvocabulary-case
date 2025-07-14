@@ -14,14 +14,13 @@ import random
 class QuestionView(APIView):
 
     def get(self, request):
-        #soru soracak kişinin profilini alma 
-        #almak istenen profile kaydının kriterini alma
+        # soru soracak kişinin profilini alma 
+        # almak istenen profile kaydının kriterini alma
         profile= get_object_or_404(Profile, user=request.user)
 
-        #profile ait tüm sözlüklerin tüm kelimelerini değ. tutmak
+        # profile ait tüm sözlüklerin tüm kelimelerini değ. tutmak
         words= Word.objects.filter(vocabulary__profile= profile)
 
-        #4 şıklı bir soru oluşturmak için kelime sayısı 4ten az olmamalı
         if words.count() < 4:
             return Response({
                 "error" : "Yeterince kelime bulunamadı. Lütfen en az 4 kelime ekleyiniz."},
@@ -40,7 +39,7 @@ class QuestionView(APIView):
             if wrong_options not in options:
                 options.append(wrong_options)
 
-        #options nesnesindeki kelimelerin yerlerini karıştır
+        # options nesnesindeki kelimelerin yerlerini karıştır
         random.shuffle(options)
 
         question_data= {
