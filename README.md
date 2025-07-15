@@ -29,9 +29,9 @@ Kullanıcılar için:
 - Python
 - Django
 - Django Rest Framework
-- SQLite (varsayılan)
-- Postman (API testi)
-- Heroku (deploy - isteğe bağlı)
+- SQLite 
+- Postman
+- Heroku 
 
 # 🔄 Serializer Yapısı
 Bu projede Django Rest Framework Serializer yapısı, model ile API arasındaki veri dönüşümünü kontrol etmek için kullanılmıştır.
@@ -45,4 +45,52 @@ Serializer'lar sayesinde:
 
 Projede `IsOwnerOrReadOnly` yetkilendirmesi kullanılarak, kullanıcıların yalnızca **kendi kelimelerini düzenleyebilmesi** sağlanmıştır.  
 Giriş ve kayıt işlemlerinden sonra token ile kimlik doğrulama yapılır.
+
+# 🔐 Kimlik Doğrulama ve Token Kullanımı
+Kullanıcıların güvenli giriş yapabilmesi için Token Authentication yöntemi kullanılmıştır.
+Kullanıcılar kayıt veya giriş yaptıktan sonra kendilerine özel bir token alır ve sonraki API isteklerinde bu token ile kimlik doğrulaması yaparlar.
+
+Kullanımı:
+* Giriş sonrası API'den dönen token alınır.
+* API çağrılarında HTTP header’a bu formatta eeklenir;
+  Authorization: Token <your_token>
+
+# ☁️ Deploy: Heroku Kullanımı
+Projeyi hızlıca canlıya alabilmek ve dış dünyayla paylaşabilmek için Heroku platformunu tercih edildi.
+
+Heroku’nun avantajları:
+* Django projeleri için kolay ve hızlı deploy imkanı
+* Anlık test ve paylaşım için uygun ortam
+* Git tabanlı deploy ile kodun doğrudan GitHub’dan yayınlanabilmesi
+
+Bu sayede projenin API uç noktaları gerçek bir sunucuda çalışır hale geldi.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
